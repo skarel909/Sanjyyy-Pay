@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjy Payment- QRIS, DANA, GOPAY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 119, 0, 0.15);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff7f00 0%, #ff5500 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .payment-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .qr-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            text-align: center;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .qr-container {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 119, 0, 0.1);
+        }
+
+        .qr-code {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-code:hover {
+            transform: scale(1.03);
+        }
+
+        .payment-methods {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .method {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(255, 119, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .method:hover {
+            transform: translateY(-5px);
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff7f00 0%, #ff5500 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .method-info {
+            flex: 1;
+        }
+
+        .method-info h3 {
+            color: #ff7f00;
+            margin-bottom: 5px;
+        }
+
+        .method-info p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: #ff7f00;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #ff5500;
+        }
+
+        footer {
+            background: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid #eee;
+        }
+
+        .instructions {
+            padding: 20px 30px;
+            background: #fffaf5;
+            border-top: 1px solid #ffe8d6;
+        }
+
+        .instructions h2 {
+            color: #ff7f00;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #ff7f00;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .qr-section, .payment-methods {
+                border: none;
+            }
+            
+            .payment-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sanjy Payment</h1>
+            <p>Lakukan pembayaran dengan QRIS, DANA, atau GOPAY</p>
+        </header>
+
+        <div class="payment-content">
+            <div class="qr-section">
+                <h2>Scan QRIS</h2>
+                <div class="qr-container">
+                    <img src="https://files.catbox.moe/okonak.jpg" alt="QR Code Pembayaran" class="qr-code">
+                    <p style="margin-top: 15px; color: #666;">Scan kode QR di atas menggunakan aplikasi bank atau dompet digital Anda</p>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h2>Transfer Langsung</h2>
+                
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="method-info">
+                        <h3>DANA</h3>
+                        <p id="dana-number">083192711644</p>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('dana-number')">Salin</button>
+                </div>
+
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fab fa-google-wallet"></i>
+                    </div>
+                    <div class="method-info">
+                        <h3>GOPAY</h3>
+                        <p id="gopay-number">083192711644</p>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Salin</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>Cara Pembayaran</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Scan kode QRIS atau salin nomor pembayaran</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Buka aplikasi dompet digital atau bank Anda</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Lakukan pembayaran sesuai nominal</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <p>Simpan bukti pembayaran Anda</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Sanjy Payment. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(id) {
+            const element = document.getElementById(id);
+            const text = element.innerText;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            alert('Nomor berhasil disalin: ' + text);
+        }
+    </script>
+</body>
+</html>
